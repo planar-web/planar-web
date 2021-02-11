@@ -1,2 +1,29 @@
-.testing {
-  width: 71.42857%; }
+@font-face {
+  font-family: "BarlowBold";
+  src: local(Arial);
+  src: url("../fonts/Barlow-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "BarlowMedium";
+  src: local(Arial);
+  src: url("../fonts/Barlow-Medium.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "BarlowSemiBold";
+  src: local(Arial);
+  src: url("../fonts/Barlow-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "RobotoRegular";
+  src: local(Arial);
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "RobotoLight";
+  src: local(Arial);
+  src: url("../fonts/Roboto-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "BarlowLight";
+  src: local(Arial);
+  src: url("../fonts/Barlow-Light.ttf") format("truetype"); }

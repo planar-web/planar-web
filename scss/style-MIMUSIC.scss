@@ -1,0 +1,1262 @@
+@mixin font-face($font-family, $font-local, $file-path) {
+    @font-face {
+        font-family: "#{$font-family}";
+        src: local($font-local);
+        src: url("#{$file-path}.ttf") format("truetype");
+    }
+}
+
+@include font-face(BarlowBold, Arial, "../fonts/Barlow-Bold");
+@include font-face(BarlowMedium, Arial, "../fonts/Barlow-Medium");
+@include font-face(BarlowSemiBold, Arial, "../fonts/Barlow-SemiBold");
+@include font-face(RobotoRegular, Arial, "../fonts/Roboto-Regular");
+@include font-face(RobotoLight, Arial, "../fonts/Roboto-Light");
+@include font-face(BarlowLight, Arial, "../fonts/Barlow-Light");
+
+@mixin container($max-width, $width, $margin, $padding) {
+    max-width: $max-width;
+    width: $width;
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin logo {
+
+    .logo {
+        align-items: center;
+        font-family: "BarlowBold";
+        font-size: calc(1rem * 1.5);
+        color: #fff;
+        letter-spacing: 6px;
+        text-decoration: none;
+        transition: .1s ease-in-out;
+
+    .logo-bg {
+        padding: 6px 8px 6px 8px;
+        margin-right: -4px;
+        font-family: "BarlowBold";
+        font-size: calc(1rem * 1.5);
+        color: #fff;
+        letter-spacing: 3px;
+        background-color: #032c9e;
+        }
+
+        &:hover {
+            text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
+        }
+    }
+}
+
+@mixin divider {
+        position: absolute;
+        content: "";
+        top: 100%;
+        left: 0;
+        width: 145px;
+        height: 5px;
+        background: linear-gradient(to right, #33cbcc 86.2%, #032c9e 86.2%, #032c9e 93%, #6aff7f 93%);
+}
+
+@mixin svg-size($width, $height) {
+    width: $width;
+    height: $height; 
+}
+
+@mixin svg-features {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-miterlimit: 10;
+    stroke-linejoin: miter;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    @include container(1857px, 100%, 0 auto, 0 19px);
+}
+
+header {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 140px;
+    font-family: "BarlowBold";
+    letter-spacing: 3px;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        box-sizing: border-box; 
+
+        @include logo;
+    
+        .navigation {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+    
+        .main-navigation {
+    
+            ul {
+                display: flex;
+                list-style: none;
+                padding: 0;
+            }
+    
+            a {
+                position: relative;
+                padding: 0 27px;
+                text-decoration: none;
+                color: #fff;
+                
+                &:hover::after {
+                    content: "";
+                    position: absolute;
+                    z-index: 1;
+                    top: 50%;
+                    left: 0;
+                    right: 0;
+                    border-bottom: 2px solid #fff;
+                }
+            }
+        }
+    
+        .social-navigation {
+                display: flex;
+                list-style: none;
+                padding: 0;
+                
+                li {
+                    padding: 0 16px;
+                }
+
+                svg {
+                    transition: .1s ease-in-out;
+                    @include svg-size(16px, 16px);
+
+                   path, circle {
+                        fill: #fff;
+                    }
+
+                    &:hover{
+                        filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+                    }
+                }
+            }
+        }
+    }
+
+.wr-slides {
+    position: relative;
+    z-index: 9;
+    width: 100%;
+    padding: 488px 0 439px 0;
+    background: linear-gradient(to right, rgba(27, 37, 80, 20%), rgba(1, 60, 154, 85%)), url("../images/zachary-nelson-HPYk8X9hh34-unsplash.jpg") no-repeat center/cover;
+    filter: contrast(1.35);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 81.5%);
+
+    .container {
+        @include container(1475px, 100%, 0 auto, 0 19px);
+        display: flex;
+        justify-content: space-around;
+       
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            .caption {
+                width: 600px;
+                height: 42px;
+                background: linear-gradient(to right, #1b2550 86.6%, #fb516e 86.6%, #fb516e 89%, #6aff7f 89%);
+
+                h3 {
+                    margin: 0;
+                    padding-left: 10px;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 2.25);
+                    letter-spacing: 6px;
+                    color: #fff
+                }
+            }
+
+            h1 {
+                margin: 0;
+                font-family: "BarlowBold";
+                font-size: calc(1rem * 7.5);
+                color: #fff
+            }
+
+            h4 {
+                margin: 0;
+                font-family: "BarlowMedium";
+                font-size: calc(1rem * 2.25);
+                font-weight: 100;
+                color: #fff
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                padding-top: 43px;
+                
+                button {
+                    padding: 26px 62px;
+                    background-color: transparent;
+                    border: 4px solid rgba(255, 255, 255, .7);
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 1.125);
+                    letter-spacing: 6px;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: .2s ease-in-out;
+
+                    &:hover {
+                        background-color: #032c9e;
+                        border: 4px solid #032c9e;
+                    }
+                }                    
+
+                a {
+                    padding-left: 30px;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 1.125);
+                    letter-spacing: 6px;
+                    color: #fff;
+                    text-decoration: none;
+                    transition: .2s ease-in-out;
+
+                    svg {
+                        @include svg-size(64px, 64px);
+    
+                       circle, polygon {
+                            @include svg-features;
+                        }
+                    }
+                     
+                     &:hover {
+                        
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            transform: translate(-6px, -6px);
+                            padding: 6px;
+                            width: 64px;
+                            height: 64px;
+                            border-radius: 100%;
+                            background: rgba(3, 44, 158, 1);
+                        }
+                    }
+
+                    &:after {
+                        content: "PLAY ALL SONGS";
+                        position: absolute;
+                        padding-left: 20px;
+                        transform: translate(0, 20px);
+                    }
+                }               
+            }
+        }    
+    } 
+}
+
+
+.wr-album-livedates {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    margin-top: -240px;
+    padding-top: 330px;
+    background: rgb(15, 21, 44);
+    clip-path: polygon(0 0, 100% 0, 100% 95.5%, 0% 98%);
+
+    svg {
+        position: absolute;
+    }
+
+    .wr-live-dates {
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        margin-top: -330px;
+        padding: 312px 0 818px 0;
+        background-image: url(../images/ellipse-1-copy-3.png), url(../images/ellipse-1-copy-2.png), url(../images/ellipse-1.png), url(../images/austin-neill.png), url(../images/shape-1.png), url(../images/shape-1-copy.png);
+        background-position: 11.5% 39.5%, 5.5% 35%, 125% 68%, 43% -93%, 62% 96%, 64% 100%;
+        background-repeat: no-repeat;
+
+        .container {
+            @include container(1170px, 100%, 0 auto, 0 19px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h2 {
+                position: relative;
+                margin: 0;
+                padding-bottom: 27px;
+                font-family: "BarlowSemiBold";
+                font-size: calc(1rem * 3.75);
+                color: #fff;
+                margin-bottom: 95px;
+
+                &:before {
+                    @include divider;
+                }
+            }
+
+            .live-date {
+                display: flex;
+                justify-content: space-between;
+                padding: 40px 0 38px 0;
+                border-bottom: 0.5px solid rgba(255, 255, 255, .5);
+
+                &:hover {
+                    .date-number {
+                        color: #fff;
+                    }
+                
+                    .img::before {
+                        background: #032c9e;
+                    }
+
+                    button {
+                        background-color: #032c9e;
+                        border: 2px solid #032c9e;
+                    }
+                }
+            }
+
+            .live-date-last {
+                display: flex;
+                justify-content: space-between;
+                padding: 40px 0 38px 0;
+                border-bottom: none;
+
+                &:hover {
+                    .date-number {
+                        color: #fff;
+                    }
+                
+                    .img::before {
+                        background: #032c9e;
+                    }
+
+                    button {
+                        background-color: #032c9e;
+                        border: 2px solid #032c9e;
+                    }
+                }
+            }
+                
+            .date {
+                position: absolute;
+                display: flex;
+                padding: 10px 23px 10px 22px;
+                flex-direction: column;
+                font-family: "BarlowSemiBold";
+                font-size: calc(1rem * 1.125);
+                color: #fff;
+                    
+                .date-number {
+                    text-align: center;
+                    letter-spacing: 6px;
+                    font-size: calc(1rem * 1.875);
+                    color: #fb516e;
+                    transition: .2s ease-in-out;
+                }
+            }
+
+            .img {
+                height: 82px;
+                width: 150px; 
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    max-height: 98%;
+                    vertical-align: top;
+                    border-radius: 0 10px 10px 0;
+                }
+    
+                &::before {
+                    content: "";
+                    padding: 0 0px 63px 80px;
+                    background: #1b2550;
+                    border-radius: 10px 0 0 10px;
+                    transition: .2s ease-in-out;
+                }
+            }
+                
+            .title {
+                padding-top: 5px;
+                display: flex;
+                flex-direction: column;
+
+                h5 {
+                    margin: 0;
+                    font-family: "BarlowSemiBold";
+                    font-size: calc(1rem * 1.625);
+                    color: #fff;
+                }
+
+                span {
+                    padding-top: 15px;
+                    font-family: "RobotoRegular";
+                    color: #778fc3;
+                }                    
+            }
+
+            .location-and-time {
+                padding-left: 120px;
+                display: flex;
+                flex-direction: column;
+
+                .location {
+                    padding-top: 10px;
+
+                    svg {
+                        @include svg-size(24px, 24px);
+                        padding-left: 3px;
+
+                    circle, polygon {
+                        @include svg-features;
+                    }
+                }
+
+                    span {
+                        display: inline-block;
+                        padding-left: 44px;
+                        font-family: "RobotoRegular";
+                        color: #778fc3;
+                    }
+                }
+
+                    .time {
+                        padding-top: 15px;
+                        
+                       span {
+                            display: inline-block;
+                            padding: 3px 0 0 44px;
+                            font-family: "RobotoRegular";
+                            color: #6aff7f;
+                        }
+
+                        svg {
+                            @include svg-size(24px, 24px);
+                            padding-left: 3px;
+
+                        circle, polyline {
+                            @include svg-features;
+                        }
+                    }
+                }
+            }
+
+            .button-normal {
+                padding-top: 8px;
+                    
+                button {
+                    padding: 21px 37px;
+                    background-color: transparent;
+                    border: 2px solid rgba(255, 255, 255, .5);
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 0.875);
+                    letter-spacing: 3px;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: .2s ease-in-out;
+                }
+            }
+
+            .button-copy {
+                padding-top: 8px;
+                    
+                button {
+                    padding: 21px 43px;
+                    background-color: transparent;
+                    border: 2px solid rgba(255, 255, 255, .1);
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 0.875);
+                    letter-spacing: 6px;
+                    color: #fb516e;
+                    cursor: pointer;
+                }
+            }
+
+            .link-view-all-dates {
+                position: relative;
+                padding-top: 35px;
+
+                a {
+                    position: relative;
+                    padding: 0 8px;
+                    text-decoration: none;
+                    font-family: "BarlowMedium";
+                    font-size: calc(1rem * 1.125);
+                    color: #fff;
+
+                    &:hover::after {
+                        content: "";
+                        position: absolute;
+                        z-index: 1;
+                        top: 53%;
+                        left: 0;
+                        right: 0;
+                        border-bottom: 2px solid #fff;
+                    }
+                }
+            }
+        }               
+    }
+
+    .wr-album {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        margin-top: -726px;
+        padding: 691px 0 295px 0;
+        background: url(../images/rectangle-4-copy-11.png), url(../images/rectangle-4-copy.png), url(../images/rectangle-4-copy-2.png), url(../images/rectangle-4-copy-12.png), url(../images/circle-2.png), url(../images/circle-1.png), url(../images/ellipse-1-copy.png), url(../images/ellipse-2-copy-2.png), url(../images/ellipse-2.png), url(../images/ellipse-2-copy-3.png), url(../images/ellipse-2-copy.png), url(../images/jo-jo.png);
+        background-position: 77% 44%, 70% 50%, 29% 75%, 31% 83%, 80% 89%, 74% 84%, 89% 9%, 13% 38%, -19% 50%, 24% 79%, 173% 100%, 0% 100%;
+        background-repeat: no-repeat;
+
+        .container {
+            @include container(1175px, 100%, 0 auto, 0 19px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            h2 {
+                position: relative;
+                margin: 0;
+                padding-bottom: 26px;
+                font-family: "BarlowSemiBold";
+                font-size: calc(1rem * 3.75);
+                color: #fff;
+                
+                &:before {
+                    left: 35% !important;
+                    @include divider;
+                }
+            }
+
+            span {
+                padding-top: 36px;
+                font-family: "RobotoLight";
+                font-size: calc(1rem * 1.25);
+                color: #778fc3;
+            }    
+            
+            .album-cover {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                width: 100%;
+                height: 955px;
+                padding: 90px 0 25px 0;
+            }
+
+            @mixin album-cover-bg-features($image, $linear-gradient, $width, $height, $margin, $x) {
+                position: relative;
+                width: $width;
+                height: $height;
+                margin: $margin;
+                background: $image, $linear-gradient;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position-x: $x;
+                border-radius: 3px;
+            }
+
+            @mixin album-cover-hover-features {
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: 3;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    transition: all 0.3s;
+                    opacity: 0;
+                    background: linear-gradient(to top, rgba(26, 36, 80, .6) 0%, rgba(26, 36, 80, .6) 100%);
+                    background-size: 100% 100%;
+                }
+
+                .play-button {
+                    position: absolute;
+                    z-index: 4;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 124px;
+                    height: 124px;
+                    transition: all 0.3s;
+                    opacity: 0;
+
+                    circle, polygon {
+                        fill: none;
+                        stroke: #fff;
+                        stroke-width: 2;
+                        stroke-linecap: square;
+                        stroke-miterlimit: 10;
+                    }
+                }
+
+                &:hover:before {
+                    opacity: 1;
+                }
+                
+                &:hover {
+                    box-shadow: 10px 10px 54px 3px rgba(0,0,0,0.4);
+                    cursor: pointer;
+
+                    .play-button {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .album-cover-1 {
+                @include album-cover-bg-features(url(../images/i-am-okay-album-cover.jpg), linear-gradient(to bottom, #6aff7f 0%, #6aff7f 100%), 341px, 341px, 220px 0 0 0px, 50%);
+                @include album-cover-hover-features;
+            }
+
+            .album-cover-2 {
+
+                h3 {
+                    position: absolute;
+                    margin: 0;
+                    left: 49px;
+                    bottom: 38px;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 3);
+                    color: #fff; 
+                    line-height: 62px;     
+                }
+
+                .rectangle-up {
+                    position: absolute;
+                    left: 84px;
+                    top: 0;
+                }
+
+                .rectangle-bottom {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 170px;
+                }
+
+                @include album-cover-bg-features(url(../images/all-falls-down-album-cover.jpg), linear-gradient(to bottom, #032c9e 0%, #032c9e 100%), 430px, 430px, 5px 0 0 30px, 60%);
+                @include album-cover-hover-features;
+            }
+
+            .album-cover-3 {
+
+                h3 {
+                    position: absolute;
+                    margin: 0;
+                    top: 146px;
+                    left: 87px;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 3.5);
+                    color: #fff; 
+                    text-align: center;
+                }
+
+                span {
+                    position: absolute;
+                    bottom: 43px;
+                    left: 155px;
+                    font-family: "BarlowLight";
+                    font-size: calc(1rem * 1.5);
+                    color: #fff;
+                    letter-spacing: 22px; 
+                }
+
+                @include album-cover-bg-features(url(../images/dont-let-me-down-cover.jpg), linear-gradient(to bottom, #33cbcc 0%, #33cbcc 100%), 430px, 430px, 30px 0 0 30px, 50%);
+                box-shadow: inset 0px 0px 2px 10px rgba(51, 203, 204, .3);
+
+                @include album-cover-hover-features;
+            }
+
+            .album-cover-4 {
+
+                h3 {
+                    margin: 0;
+                    position: absolute;
+                    left: 49px;
+                    top: 189px;
+                    background: url("../images/dont-let-me-down-cover.jpg") 50% 43% no-repeat;
+                    background-size: cover;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 4.26);
+                    letter-spacing: 6px;
+                }
+
+                @include album-cover-bg-features(url(../images/alone-album-cover.jpg), linear-gradient(to bottom, #6aff7f 0%, #6aff7f 100%), 340px, 340px, 340px 0 0 30px, 50%);
+                @include album-cover-hover-features;
+            }
+
+            .link-view-all-albums {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                @include logo;
+
+                .link-albums {
+                    position: relative;
+                    padding: 20px 8px 0 8px;
+                    text-decoration: none;
+                    font-family: "BarlowMedium";
+                    font-size: calc(1rem * 1.125);
+                    color: #fff;
+
+                    &:hover::after {
+                        content: "";
+                        position: absolute;
+                        z-index: 1;
+                        top: 79%;
+                        left: 0;
+                        right: 0;
+                        border-bottom: 2px solid #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .wr-social {
+
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        margin-top: -200px;
+        padding: 543px 0 343px 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(to right, rgba(58, 76, 96, .7) 0%, rgba(240, 85, 86, .7) 100%), url(../images/greyson-joralemon.jpg);
+        filter: contrast(173%);
+        background-position: 87% 120%;
+        background-repeat: no-repeat;
+        background-size: 170%;
+
+        .container {
+            @include container(1160px, 100%, 0 auto, 0 19px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .social-links {
+                margin-top: -190px;
+                display: flex;
+                flex-direction: column;
+                
+                h2 {
+                    position: relative;
+                    margin: 0;
+                    padding-bottom: 26px;
+                    font-family: "BarlowSemiBold";
+                    font-size: calc(1rem * 3.75);
+                    color: #fff;
+                    line-height: 77px;
+
+                    &:before {    
+                        @include divider;
+                    }
+                }
+
+                ul {
+                    padding: 0;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 0.875);
+                    list-style: none;
+
+                    li {
+                        padding: 22px 0;
+                        letter-spacing: 3px;
+
+                    a {
+                        text-transform: uppercase;
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .social-links-active {
+                color: #e14e69;
+            }
+        }
+
+            .content {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                width: 67%;
+                height: 930px;
+
+                @mixin user($background) {
+                    svg {
+                        margin-left: 55px;
+                        padding: 12px;
+                        background: $background;
+                    }
+
+                    .user {
+                        display: inline-block;
+                        padding-left: 20px;
+                        line-height: 25px;
+                        letter-spacing: 1px;
+                        font-family: "BarlowBold";
+                        color: #fff;
+                        text-decoration: none;
+
+                         span {
+                            font-family: "RobotoRegular";
+                            color: #778fc3;
+                         }
+                    }
+                }
+
+                @mixin content {
+                    p {
+                        padding: 156px 67px 26px 55px;
+                        margin: 0;
+                        font-family: "RobotoRegular";
+                        font-size: calc(1rem * 1.125);
+                        line-height: 30px;
+                        color: #fff;
+
+                        a {
+                            color: #6aff7f;
+                        }
+                    }
+                }
+
+                svg {
+                    position: relative;
+                    @include svg-size(16px, 16px);
+
+                   path, circle {
+                        fill: #fff;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+                .youtube {
+                    width: 370px;
+                    height: 320px;
+                    background-color: rgba(255, 255, 255, .4);
+
+                    h4 {
+                        padding: 55px 55px 41px 55px;
+                        margin: 0;
+                        font-family: "BarlowSemiBold";
+                        font-size: calc(1rem * 1.625);
+                        color: #fff;
+                        line-height: 38px;
+                    }
+                    
+                    @include user(#fb516e);
+                }
+
+                .facebook {
+                    position: relative;
+                    margin: 30px 30px 0 0;
+                    width: 370px;
+                    height: 466px;
+                    background-color: rgba(255, 255, 255, .4);
+                    overflow: hidden;
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        top: -150px;
+                    }
+                    
+                    @include content;
+                    @include user(#032c9e);
+                }
+
+                .twitter {
+                    position: relative;
+                    margin: 110px 0 30px 0;
+                    width: 370px;
+                    height: 466px;
+                    background-color: rgba(255, 255, 255, .4);
+                    overflow: hidden;
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        top: -253px;
+                        clip: rect(253px 370px 353px 0px);
+                    }
+
+                    @include content;
+                    @include user(#33cbcc);
+                }
+            }
+        }
+    }
+}
+
+.wr-news {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    margin-top: -410px;
+    padding: 570px 0 510px 0;
+    background-image: url(../images/ellipse-1-copy-5.png), url(../images/joseph-young.png), url(../images/shape-1-news.png), url(../images/shape-1-copy-news.png);
+    background-position: 5% 98%, 50% 0%, 45% 91%, 40% 90%;
+    background-repeat: no-repeat;
+
+    .container {
+        @include container(1170px, 100%, 0 auto, 0 19px);
+        display: flex;
+        justify-content: space-between;
+        
+        .slide-news {
+            display: flex;
+            flex-direction: column;
+            width: 579px;
+            height: 666px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(73, 191, 168, .7);
+            border-radius: 10px;
+            list-style: none;
+
+            @mixin slide-normal-link {
+                a {
+                    display: block;
+                    padding: 48px 0 43px 70px;
+                    font-family: "BarlowSemiBold";
+                    font-size: calc(1rem * 1.375);
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+
+            .slide-normal-1 {
+                background-color: rgba(73, 191, 168, .4);
+                border-radius: 10px 10px 0 0;
+                @include slide-normal-link;
+            }
+
+            .slide-active {
+                height: 219px;
+                background-color: #032c9e;
+                border-radius: 0;
+                
+                span {
+                    display: block;
+                    padding: 50px 0 0 70px;
+                    font-family: "BarlowBold";
+                    font-size: calc(1rem * 0.8125);
+                    color: #fff;
+                    letter-spacing: 2px;
+                }
+
+                h4 {
+                    margin: 0;
+                    padding: 20px 0 0 70px;
+                    font-family: "BarlowSemiBold";
+                    font-size: calc(1rem * 1.625);
+                    color: #fff;
+                }
+
+                p {
+                    margin: 0;
+                    padding: 23px 65px 0 70px;
+                    font-family: "RobotoRegular";
+                    color: #5882f5;
+                    line-height: 30px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis; 
+                }
+
+                &:before{
+                    content: " ";
+                    position: absolute;
+                    margin-left: -10px;
+                    background-color: #6aff7f;
+                    height: 215px;
+                    width: 10px;
+                }
+            }
+
+            .slide-normal-2 {
+                background-color: rgba(3, 44, 158, .6);
+                border-radius: 0;
+                @include slide-normal-link;
+            }
+
+            .slide-normal-3 {
+                background-color: rgba(3, 44, 158, .4);
+                border-radius: 0;
+                @include slide-normal-link;
+            }
+
+            .slide-view-all {
+                a {
+                    display: block;
+                    padding: 32px 0 0 70px;
+                    text-decoration: none;
+
+                    svg {
+                        position: absolute;
+                        padding-left: 20px;
+                        width: 24px;
+                        height: 24px;
+                        @include svg-size(24px, 24px);
+
+                        line, polyline {
+                            @include svg-features;
+                        }   
+                    }
+
+                &::before {
+                    content: "View all latest news ::";
+                    font-family: "BarlowMedium";
+                    font-size: calc(1rem * 1.125);
+                    color: #fff;
+                }
+            }
+        }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 502px;
+
+            .column {
+                font-family: "BarlowBold";
+                font-size: calc(1rem * 1.125);
+                color: #fff;
+                letter-spacing: 3px;
+            }
+
+            h2 {
+                position: relative;
+                margin: 0;
+                padding: 40px 0 50px 0;
+                font-family: "BarlowSemiBold";
+                font-size: calc(1rem * 3.75);
+                color: #fff;
+                line-height: 77px;
+                
+                &:before {
+                    @include divider;
+                }
+            }
+
+            .date {
+                padding-top: 50px;
+                font-family: "BarlowBold";
+                color: #fff;
+                letter-spacing: 2px;
+            }
+
+            p {
+                margin: 0;
+                padding-top: 50px;
+                font-family: "RobotoRegular";
+                font-size: calc(1rem * 1.125);
+                color: #fff;
+                line-height: 30px;
+            }
+
+            button {
+                margin-top: 40px;
+                padding: 26px 44px;
+                background-color: transparent;
+                border: 2px solid rgba(255, 255, 255, .5);
+                font-family: "BarlowBold";
+                font-size: calc(1rem * 0.875);
+                letter-spacing: 3px;
+                color: #fff;
+                cursor: pointer;
+                transition: .2s ease-in-out;
+
+                &:hover {
+                    background-color: #fff;
+                    border: 2px solid #fff;
+                    color: #032c9e;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    position: sticky;
+    z-index: 3;
+    width: 100%;
+    margin-top: -746px;
+    padding: 750px 0 100px 0;
+    background-image: url(../images/ellipse-1-copy-6.png), url(../images/ellipse-1-copy-4.png), url(../images/marc-antonie-depelteau.jpg);
+    background-position: 10% 55%, 15% 48%, 50% 0%;
+    background-repeat: no-repeat;
+
+    .container {
+        @include container(1170px, 100%, 0 auto, 0 19px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            position: relative;
+            margin: 0;
+            padding: 30px 0 26px 0;
+            font-family: "BarlowSemiBold";
+            font-size: calc(1rem * 3.75);
+            color: #fff;
+
+            &:before {
+                left: 35% !important;
+                @include divider;
+            }
+        }
+
+        span {
+            padding-top: 30px;
+            font-family: "RobotoLight";
+            font-size: calc(1rem * 1.25);
+            color: #778fc3;
+        }
+
+        @mixin input-features {
+            width: 402px;
+            padding: 20px 0 20px 0;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, .5);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 70px;
+
+            [type="text"] {
+                @include input-features;
+            }
+
+            [type="email"] {
+                margin-top: 30px;
+                @include input-features;
+            }
+
+            [type="text"]::placeholder, [type="email"]::placeholder, .btn-sign-up { 
+                font-family: "BarlowBold";
+                color: #fff; 
+                letter-spacing: 2px;
+            }
+        
+            .btn-sign-up {
+                width: 402px;
+                margin-top: 40px;
+                padding: 26px 145px;
+                border: none;
+                background-color: transparent;
+                border: 2px solid rgba(255, 255, 255, .5);
+            }
+        }
+
+        .ft-logo {
+            margin-top: 200px;
+            align-items: center;
+            font-family: "BarlowBold";
+            font-size: calc(1rem * 2);
+            color: #fff;
+            letter-spacing: 6px;
+            text-decoration: none;
+            transition: .1s ease-in-out;
+    
+        .logo-bg {
+            padding: 6px 8px 6px 8px;
+            margin-right: -4px;
+            font-family: "BarlowBold";
+            font-size: calc(1rem * 2);
+            color: #fff;
+            letter-spacing: 3px;
+            background-color: #032c9e;
+            }
+    
+            &:hover {
+                text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
+            }
+        }
+
+        .ft-menu {
+            display: flex;
+            margin-top: 70px;
+            padding: 0;
+            list-style: none;
+
+            a {
+                padding: 0 25px;
+                font-family: "BarlowBold";
+                font-size: calc(1rem * 0.875);
+                color: #fff;
+                letter-spacing: 2px;
+                text-decoration: none;
+            }
+
+            .menu-active {
+                color: #fff; 
+            }
+        
+            .menu-disabled {
+                color: #48547c; 
+            } 
+        }
+
+        .ft-social-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 40px 0 0 0;
+
+            a {
+                padding: 0 16px;
+                text-decoration: none;
+            }
+
+            svg {
+                @include svg-size(16px, 16px);
+
+               path, circle {
+                    fill: rgb(72, 84, 124);
+                }
+
+                &:hover{
+                    filter: drop-shadow(0px 0px 5px rgba(72, 84, 124, 1));
+                }
+            } 
+        }
+    }
+}
+
+
+
+
+
