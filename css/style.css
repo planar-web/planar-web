@@ -1,29 +1,162 @@
 @font-face {
-  font-family: "BarlowBold";
+  font-family: "Montserrat-Bold";
   src: local(Arial);
-  src: url("../fonts/Barlow-Bold.ttf") format("truetype"); }
+  src: url("../fonts/Montserrat-Bold.ttf") format("truetype"); }
 
 @font-face {
-  font-family: "BarlowMedium";
+  font-family: "Montserrat-ExtraBold";
   src: local(Arial);
-  src: url("../fonts/Barlow-Medium.ttf") format("truetype"); }
+  src: url("../fonts/Montserrat-ExtraBold.ttf") format("truetype"); }
 
 @font-face {
-  font-family: "BarlowSemiBold";
+  font-family: "Montserrat-Regular";
   src: local(Arial);
-  src: url("../fonts/Barlow-SemiBold.ttf") format("truetype"); }
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype"); }
 
-@font-face {
-  font-family: "RobotoRegular";
-  src: local(Arial);
-  src: url("../fonts/Roboto-Regular.ttf") format("truetype"); }
+body {
+  margin: 0;
+  padding: 0; }
 
-@font-face {
-  font-family: "RobotoLight";
-  src: local(Arial);
-  src: url("../fonts/Roboto-Light.ttf") format("truetype"); }
+header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 120px;
+  font-family: "Montserrat-Bold";
+  font-size: calc(1rem * 1.125);
+  letter-spacing: 2px; }
+  header .container {
+    max-width: 1650px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; }
+    header .container .logo img {
+      width: 200px;
+      height: 55px; }
+    header .container .navigation {
+      display: flex;
+      align-items: center;
+      height: 100%; }
+      header .container .navigation .main-navigation ul {
+        display: flex;
+        list-style: none;
+        padding: 0; }
+      header .container .navigation .main-navigation a {
+        position: relative;
+        padding: 0 25px;
+        text-decoration: none;
+        color: #fff; }
+        header .container .navigation .main-navigation a:hover::after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          bottom: -50%;
+          left: 0;
+          right: 0;
+          border-bottom: 2px solid #fff; }
+      header .container .navigation .second-navigation {
+        display: flex;
+        list-style: none;
+        padding-left: 50px; }
+        header .container .navigation .second-navigation li {
+          padding: 0 30px 0 0; }
+          header .container .navigation .second-navigation li svg {
+            transition: .1s ease-in-out;
+            width: 25px;
+            height: 25px; }
+            header .container .navigation .second-navigation li svg path, header .container .navigation .second-navigation li svg circle {
+              fill: #fff; }
+          header .container .navigation .second-navigation li a.btn-language {
+            text-decoration: none;
+            color: white; }
 
-@font-face {
-  font-family: "BarlowLight";
-  src: local(Arial);
-  src: url("../fonts/Barlow-Light.ttf") format("truetype"); }
+.wr-first-slide {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  padding: 230px 0 120px 0;
+  background: linear-gradient(to bottom right, rgba(187, 0, 154, 0.8), rgba(103, 0, 185, 0.8), rgba(32, 72, 201, 0.5), rgba(0, 152, 220, 0.5)), url("../images/wr-slides/main-slider-pattern1.png") no-repeat left/contain, linear-gradient(to right, black 30%, black 50%, rgba(0, 0, 0, 0) 80%), url("../images/wr-slides/main-slider-photo1.png") no-repeat right/contain; }
+  .wr-first-slide .container {
+    max-width: 1650px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between; }
+    .wr-first-slide .container .content {
+      justify-content: space-between; }
+      .wr-first-slide .container .content .first-slide-description {
+        display: flex;
+        flex-direction: column; }
+        .wr-first-slide .container .content .first-slide-description .slide-index {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          font-family: "Montserrat-Bold";
+          font-size: calc(1rem * 0.94);
+          color: #fff; }
+          .wr-first-slide .container .content .first-slide-description .slide-index .slide-index-number:after {
+            content: "";
+            display: inline-block;
+            height: 0.5em;
+            vertical-align: bottom;
+            width: 90px;
+            margin: 0 20px;
+            border-top: 1px solid white; }
+        .wr-first-slide .container .content .first-slide-description h1 {
+          font-family: "Montserrat-ExtraBold";
+          font-size: calc(1rem * 2.1875);
+          letter-spacing: 1px;
+          color: #fff;
+          margin: 0;
+          padding-top: 20px; }
+        .wr-first-slide .container .content .first-slide-description h3 {
+          font-family: "Montserrat-Regular";
+          font-weight: 100;
+          font-size: calc(1rem * 1.125);
+          line-height: 1.5;
+          letter-spacing: 0.3px;
+          color: #fff;
+          margin: 0;
+          padding-top: 45px; }
+        .wr-first-slide .container .content .first-slide-description .button {
+          display: flex;
+          flex-direction: row;
+          align-items: center; }
+          .wr-first-slide .container .content .first-slide-description .button button {
+            width: 230px;
+            height: 60px;
+            font-family: "Montserrat-Bold";
+            font-size: calc(1rem * 1.25);
+            color: #0098DC;
+            margin-top: 45px;
+            padding: 17px 56px 17px 30px;
+            border: 0px;
+            border-radius: 30px 0;
+            background-color: #fff;
+            cursor: pointer; }
+            .wr-first-slide .container .content .first-slide-description .button button:after {
+              content: "";
+              position: absolute;
+              z-index: -1;
+              left: 110px;
+              width: 230px;
+              height: 60px;
+              margin: -11px 0 0 -3px;
+              border-radius: 30px 0;
+              border: 2px solid #0098DC;
+              box-shadow: 0 0 20px rgba(0, 152, 220, 0.45); }
+          .wr-first-slide .container .content .first-slide-description .button a {
+            width: 19px;
+            height: 0;
+            position: absolute;
+            width: 19px;
+            height: 0px;
+            left: 283px;
+            padding-top: 23px; }
+            .wr-first-slide .container .content .first-slide-description .button a path {
+              fill: #0098DC; }

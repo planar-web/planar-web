@@ -6,9 +6,229 @@
   }
 }
 
-@include font-face(BarlowBold, Arial, "../fonts/Barlow-Bold");
-@include font-face(BarlowMedium, Arial, "../fonts/Barlow-Medium");
-@include font-face(BarlowSemiBold, Arial, "../fonts/Barlow-SemiBold");
-@include font-face(RobotoRegular, Arial, "../fonts/Roboto-Regular");
-@include font-face(RobotoLight, Arial, "../fonts/Roboto-Light");
-@include font-face(BarlowLight, Arial, "../fonts/Barlow-Light");
+@include font-face(Montserrat-Bold, Arial, "../fonts/Montserrat-Bold");
+@include font-face(Montserrat-ExtraBold, Arial, "../fonts/Montserrat-ExtraBold");
+@include font-face(Montserrat-Regular, Arial, "../fonts/Montserrat-Regular");
+
+@mixin container($max-width, $width, $margin, $padding) {
+  max-width: $max-width;
+  width: $width;
+  margin: $margin;
+  padding: $padding;
+}
+
+@mixin svg-size($width, $height) {
+  width: $width;
+  height: $height; 
+}
+
+@mixin svg-features {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-miterlimit: 10;
+  stroke-linejoin: miter;
+}
+
+@mixin button($width, $height, $font-family, $font-size, $color, $margin-top, $padding, $border, $border-radius, $background-color) {
+  width: $width;
+  height: $height;
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $color;
+  margin-top: $margin-top;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+  background-color: $background-color;
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 120px;
+  font-family: "Montserrat-Bold";
+  font-size: calc(1rem * 1.125);
+  letter-spacing: 2px;
+
+  .container {
+    @include container(1650px, 100%, 0 auto, 0 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+
+      .logo img {
+        width: 200px;
+        height: 55px;
+      }
+
+      .navigation {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .main-navigation {
+    
+          ul {
+              display: flex;
+              list-style: none;
+              padding: 0;
+          }
+  
+          a {
+              position: relative;
+              padding: 0 25px;
+              text-decoration: none;
+              color: #fff;
+              
+              &:hover::after {
+                  content: "";
+                  position: absolute;
+                  z-index: 1;
+                  bottom: -50%;
+                  left: 0;
+                  right: 0;
+                  border-bottom: 2px solid #fff;
+              }
+          }
+      }
+
+      .second-navigation {
+        display: flex;
+        list-style: none;
+        padding-left: 50px;
+        
+        li {
+            padding: 0 30px 0 0;
+
+            svg {
+              transition: .1s ease-in-out;
+              @include svg-size(25px, 25px);
+  
+             path, circle {
+                  fill: #fff;
+             }
+          }
+
+         a.btn-language {
+          text-decoration: none;
+          color: white;
+         }
+        }
+      }
+    }
+  }
+}
+
+.wr-first-slide {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  padding: 230px 0 120px 0;
+  background: linear-gradient(to bottom right, rgba(187, 0, 154, .8), rgba(103, 0, 185, .8), rgba(32, 72, 201, .5), rgba(0, 152, 220, .5)),
+              url("../images/wr-slides/main-slider-pattern1.png")  no-repeat left/contain, 
+              linear-gradient(to right, rgba(0, 0, 0, 100%) 30%, rgba(0, 0, 0, 80%) 50%, rgba(0, 0, 0, 0%) 80%), 
+              url("../images/wr-slides/main-slider-photo1.png") no-repeat right/contain;
+
+  .container {
+    @include container(1650px, 100%, 0 auto, 0 100px);
+        display: flex;
+        justify-content: space-between;
+
+        .content {
+          justify-content: space-between;
+
+          .first-slide-description {
+            display: flex;
+            flex-direction: column;
+
+            .slide-index {
+              display: flex;
+              justify-content: left;
+              align-items: center;
+              font-family: "Montserrat-Bold";
+              font-size: calc(1rem * 0.94);
+              color: #fff;
+
+              .slide-index-number {
+               
+                &:after {
+                  content: "";
+                  display: inline-block;
+                  height: 0.5em;
+                  vertical-align: bottom;
+                  width: 90px;
+                  margin: 0 20px;
+                  border-top: 1px solid white;
+                }
+              }  
+            }
+
+            h1 {
+              font-family: "Montserrat-ExtraBold";
+              font-size: calc(1rem * 2.1875);
+              letter-spacing: 1px;
+              color: #fff;
+              margin: 0;
+              padding-top: 20px;
+            }
+
+            h3 {
+              font-family: "Montserrat-Regular";
+              font-weight: 100;
+              font-size: calc(1rem * 1.125);
+              line-height: 1.5;
+              letter-spacing: 0.3px;
+              color: #fff;
+              margin: 0;
+              padding-top: 45px;
+            }
+
+            .button {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+
+              button {
+                @include button(230px, 60px, "Montserrat-Bold", calc(1rem * 1.25), #0098DC, 45px, 17px 56px 17px 30px, 0px, 30px 0, #fff);
+
+                &:after {
+                  content: "";
+                  position: absolute;
+                  z-index: -1;
+                  left: 110px;
+                  width: 230px;
+                  height: 60px;
+                  margin: -11px 0 0 -3px;
+                  border-radius: 30px 0;
+                  border: 2px solid #0098DC;
+                  box-shadow: 0 0 20px rgba(0, 152, 220, 0.45);
+                }
+              }
+
+              a {
+                @include svg-size(19px, 0);
+                position: absolute;
+                width: 19px;
+                height: 0px;
+                left: 283px;
+                padding-top: 23px;
+    
+                path {
+                     fill: #0098DC
+                }
+              }
+            }
+          }
+        }
+  }
+}
